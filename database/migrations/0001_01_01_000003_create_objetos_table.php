@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('objetos', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('marca', 50);
+            $table->string('modelo', 50);
+            $table->string('tipo', 20);
+            $table->decimal('preco', 10, 2);
+            $table->string('estado', 20);
+            $table->date('data_fabricacao');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('objetos');
+    }
+};
